@@ -1,3 +1,4 @@
+import svgr from "vite-plugin-svgr";
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import dts from "vite-plugin-dts";
@@ -22,5 +23,5 @@ export default defineConfig({
     sourcemap: true,
     emptyOutDir: true,
   },
-  plugins: [react(), dts()],
+  plugins: [react(), dts(), svgr()],
 });
