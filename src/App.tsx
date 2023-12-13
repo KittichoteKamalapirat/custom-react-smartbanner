@@ -1,12 +1,12 @@
 import "./App.css";
 import { Button } from "./components/Button";
-import { SmartBanner } from "./components/Smartbanner";
+import { Smartbanner } from "./components/Smartbanner";
 
 function App() {
   return (
     <div>
       <Button />
-      <SmartBanner
+      <Smartbanner
         title="Earnin: Make Every Day Payday"
         applePrice="Free"
         appleUrl="Free"

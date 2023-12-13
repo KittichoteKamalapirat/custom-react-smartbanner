@@ -20,7 +20,7 @@ interface Props {
   enablePlatform?: boolean;
   closeLabel?: string;
 }
-export const SmartBanner = ({
+export const Smartbanner = ({
   iconUrl,
   title,
   //   description = "",
