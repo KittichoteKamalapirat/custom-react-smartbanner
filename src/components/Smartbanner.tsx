@@ -30,13 +30,13 @@ interface NoDesktopProps extends CommonProps {
   displayOnDesktop?: undefined | false;
 }
 
-interface DesktopProps extends CommonProps {
+export interface DesktopProps extends CommonProps {
   displayOnDesktop: true;
   desktopDescription: string;
   desktopUrl: string;
 }
 
-type Props = NoDesktopProps | DesktopProps;
+export type SmartBannerProps = NoDesktopProps | DesktopProps;
 
 export const Smartbanner = ({
   iconUrl,
@@ -58,7 +58,7 @@ export const Smartbanner = ({
   // enablePlatform = true,
   closeLabel = "Close",
   ...rest
-}: Props) => {
+}: SmartBannerProps) => {
   const [isOpen, setIsOpen] = useState<boolean>(initialIsOpen);
   const handleClose = () => setIsOpen(false);
 
