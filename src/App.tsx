@@ -4,15 +4,15 @@ import { Smartbanner } from "./components/Smartbanner";
 function App() {
   return (
     <div>
-      <Button />
+      ...
       <Smartbanner
-        title="Jouzu Speak: Speak Japanese with AI"
+        title="Frontend Masters"
         applePrice="Free"
         appleUrl="Free"
         androidPrice="Free"
         androidUrl="Free"
-        iconUrl="https://is1-ssl.mzstatic.com/image/thumb/Purple126/v4/16/42/ce/1642cec2-efef-f43b-6e9b-576322fe17ce/AppIcon-0-0-1x_U007ephone-0-0-0-85-220.png/540x540bb.jpg"
-        author=""
+        iconUrl="https://play-lh.googleusercontent.com/8X11A1RYP--qUN-FA3tuEdNG--8QSptibgY6xWQRUDI2YASyAXe726CaE_jEohFYGno=w240-h480-rw"
+        author="Frontend Masters"
       />
       <div className="mt-4">Content here 1</div>
       <div className="mt-4">Content here 2</div>
