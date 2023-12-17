@@ -46,7 +46,6 @@ export const Smartbanner = ({
     >
       {/* left */}
       <div className="flex justify-start items-center gap-2">
-        {/* <img alt="App Icon" src={closeIcon} className="w-3 h-3 text-red-300" /> */}
         <CloseIcon className="w-4 h-4 text-neutral-400" />
         <img alt="App Icon" src={iconUrl} className="w-12 h-12 rounded-lg" />
         <div className="text-left">

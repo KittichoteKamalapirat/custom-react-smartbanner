@@ -1,7 +1,7 @@
 {
   "name": "custom-react-smartbanner",
   "private": false,
-  "version": "0.0.2",
+  "version": "0.0.6",
   "type": "module",
   "main": "dist/index.umd.js",
   "module": "dist/index.es.js",
@@ -11,7 +11,8 @@
       "import": "./dist/index.es.js",
       "require": "./dist/index.umd.js",
       "types": "./dist/index.d.ts"
-    }
+    },
+    "./*.css": "./*.css"
   },
   "files": [
     "/dist"
@@ -19,11 +20,14 @@
   "publishConfig": {
     "access": "public"
   },
+  "license": "MIT",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "tsc && vite build && npm run build:tailwind",
     "prepare": "npm run build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "build:tailwind": "tailwindcss -i ./src/index.css -o ./dist/custom-react-smartbanner.css",
+    "publish": "npm publish"
   },
   "dependencies": {
     "react": "^18.2.0",
