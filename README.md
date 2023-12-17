@@ -77,6 +77,23 @@ function ProductPage() {
 }
 ```
 
+
+## Props
+
+| Prop | Required / Optional | Default Value | Description |
+| --- | --- | --- | --- |
+| title | required | `undefined` | Title of the app name. Should be the name of the app with or without a slogan ex. Frontend, Masters, Frontend Masters | Your Path to Senior Developer |
+| appleDescription | optional | `""` | Description to display on the banner if the device is apple (This will be automatically detected via user agent). Here, you can choose to display the price, review ratings, author's name, etc. |
+| androidDescription | optional | `""` | Description to display on the banner if the device is android (This will be automatically detected via user agent)|
+| iconUrl | required | `undefined` | Url of the icon that will be displayed (If your app is published, you can get the icon url on either the app store or the play store) |
+| buttonLabel | optional | `"Open"` | Label for the banner button |
+| appleUrl | optional | `undefined` | URL where the users will be redirected on clicking the banner (if the user is using an apple device) |
+| androidUrl | optional | `undefined` | URL where the users will be redirected on clicking the banner (if the user is using an android device) |
+| displayOnApple | optional | `true` | Indicates if the banner should be displayed on apple devices |
+| displayOnAndroid | optional | `true`` | Indicates if the banner should be displayed on android devices |
+
+
+
 ## Contribution
 
 Contributions are always welcome. Please fork this repository and create a pull request if you have any improvements or feature additions. We appreciate your help in making this package more user-friendly!
