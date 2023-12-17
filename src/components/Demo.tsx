@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { SmartBannerProps, Smartbanner } from "./Smartbanner";
-import { isAndroid, isIos, isMobile } from "../userAgent";
+import { SmartbannerProps, Smartbanner } from "./Smartbanner";
+import { isAndroid, isIos, isMobile } from "../lib/userAgent";
 
 const initialState = {
   title: "Frontend Masters",
@@ -19,7 +19,7 @@ const initialState = {
 const CHANGE_PLATFORM_LABEL = "Change to this platform via Dev Tools";
 
 const Demo = () => {
-  const [props, setProps] = useState<SmartBannerProps>(initialState);
+  const [props, setProps] = useState<SmartbannerProps>(initialState);
 
   const {
     iconUrl,
@@ -52,8 +52,8 @@ const Demo = () => {
           title={title}
           appleDescription={appleDescription}
           androidDescription={androidDescription}
-          // applePrice="Free"
-          // androidPrice="Free
+          displayOnApple={displayOnApple}
+          displayOnAndroid={displayOnAndroid}
           appleUrl={appleUrl}
           androidUrl={androidUrl}
           iconUrl={iconUrl}

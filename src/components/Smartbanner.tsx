@@ -1,7 +1,7 @@
 /// <reference types="vite-plugin-svgr/client" />
 import { useState } from "react";
 import CloseIcon from "../assets/close.svg?react";
-import { isAndroid, isIos, isMobile } from "../userAgent";
+import { isAndroid, isIos, isMobile } from "../lib/userAgent";
 
 interface CommonProps {
   iconUrl: string;
@@ -36,7 +36,7 @@ export interface DesktopProps extends CommonProps {
   desktopUrl: string;
 }
 
-export type SmartBannerProps = NoDesktopProps | DesktopProps;
+export type SmartbannerProps = NoDesktopProps | DesktopProps;
 
 export const Smartbanner = ({
   iconUrl,
@@ -58,7 +58,7 @@ export const Smartbanner = ({
   // enablePlatform = true,
   closeLabel = "Close",
   ...rest
-}: SmartBannerProps) => {
+}: SmartbannerProps) => {
   const [isOpen, setIsOpen] = useState<boolean>(initialIsOpen);
   const handleClose = () => setIsOpen(false);
 
@@ -93,14 +93,14 @@ export const Smartbanner = ({
     )
       return "hidden";
 
-    return "block";
+    return "flex";
   })();
 
   // if (!isMobile) return null;
 
   return (
     <div
-      className={`fixed top-0 inset-x-0 flex justify-between items-center bg-neutral-100 px-4 py-2 border-b-[1px] border-neutral-300 ${display}`}
+      className={`fixed top-0 inset-x-0 justify-between items-center bg-neutral-100 px-4 py-2 border-b-[1px] border-neutral-300 ${display}`}
     >
       {/* left */}
       <div className="flex justify-start items-center gap-2">
