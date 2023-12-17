@@ -87,10 +87,13 @@ function ProductPage() {
 | androidDescription | optional | `""` | Description to display on the banner if the device is android (This will be automatically detected via user agent)|
 | iconUrl | required | `undefined` | Url of the icon that will be displayed (If your app is published, you can get the icon url on either the app store or the play store) |
 | buttonLabel | optional | `"Open"` | Label for the banner button |
-| appleUrl | optional | `undefined` | URL where the users will be redirected on clicking the banner (if the user is using an apple device) |
-| androidUrl | optional | `undefined` | URL where the users will be redirected on clicking the banner (if the user is using an android device) |
+| appleUrl | optional | `undefined` | URL where the users will be redirected when clicking the banner (if the user is using an apple device) |
+| androidUrl | optional | `undefined` | URL where the users will be redirected when clicking the banner (if the user is using an android device) |
 | displayOnApple | optional | `true` | Indicates if the banner should be displayed on apple devices |
-| displayOnAndroid | optional | `true`` | Indicates if the banner should be displayed on android devices |
+| displayOnAndroid | optional | `true` | Indicates if the banner should be displayed on android devices |
+| displayOnDesktop | optional | `false` | Indicates if the banner should be displayed on desktop |
+| desktopDescription | optional | `undefined` | Description to display on the banner if the device is desktop (not mobile). This prop is `required` if `displayOnDesktop` is set to `true` |
+| desktopUrl | optional | `undefined` | URL where the users will be redirected when clicking the banner if the device is desktop (not mobile). This prop is `required` if `displayOnDesktop` is set to `true`. You can set this prop to either the app store link or the play store link. The logic to determine which one to redirect to is handled on your side. |
 
 
 
