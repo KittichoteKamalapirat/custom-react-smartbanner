@@ -102,7 +102,7 @@ export const Smartbanner = ({
         />
         <img alt="App Icon" src={iconUrl} className="w-12 h-12 rounded-lg" />
         <div className="text-left">
-          <p className="text-sm">{title}</p>
+          <p className="text-sm font-semibold">{title}</p>
           <p className="text-xs">{description}</p>
         </div>
       </div>
