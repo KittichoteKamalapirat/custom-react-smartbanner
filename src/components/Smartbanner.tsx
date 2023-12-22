@@ -1,29 +1,26 @@
 /// <reference types="vite-plugin-svgr/client" />
 import { useState } from "react";
 import CloseIcon from "../assets/close.svg?react";
+import { COOKIE, getCookie } from "../lib/cookie";
 import { isAndroid, isIos, isMobile } from "../lib/userAgent";
 
 interface CommonProps {
-  iconUrl: string;
+  // ui
   title: string;
-  //   description?: string;
-  displayOnApple?: boolean;
-  displayOnAndroid?: boolean;
+  iconUrl: string;
   appleDescription?: string;
   androidDescription?: string;
   buttonLabel?: string;
-  //   ios
-  // applePrice: string;
+  //   logics
   appleUrl: string;
-
-  // android
-  // androidPrice: string;
   androidUrl: string;
-
-  // enablePlatform?: boolean;
-  closeLabel?: string;
+  displayOnApple?: boolean;
+  displayOnAndroid?: boolean;
+  // state
 
   isOpen?: boolean;
+  onClose?: () => void;
+  notDisplayAgainSeconds?: number; // in seconds
 }
 
 interface NoDesktopProps extends CommonProps {
@@ -39,28 +36,25 @@ export interface DesktopProps extends CommonProps {
 export type SmartbannerProps = NoDesktopProps | DesktopProps;
 
 export const Smartbanner = ({
-  iconUrl,
+  // ui
   title,
-  //   description = "",
-  displayOnApple = true,
-  displayOnAndroid = true,
+  iconUrl,
   appleDescription = "",
   androidDescription = "",
   buttonLabel = "Open",
-  // applePrice,
-  // androidPrice,
+  // logics
+  displayOnApple = true,
+  displayOnAndroid = true,
   appleUrl,
-  isOpen: initialIsOpen = true,
-
   androidUrl,
-  // displayOnDesktop = false,
-
-  // enablePlatform = true,
-  closeLabel = "Close",
+  //state
+  isOpen: initialIsOpen = true,
+  onClose,
   ...rest
 }: SmartbannerProps) => {
-  const [isOpen, setIsOpen] = useState<boolean>(initialIsOpen);
-  const handleClose = () => setIsOpen(false);
+  const [isOpen, setIsOpen] = useState<boolean>(
+    getCookie(COOKIE.HideSmartBanner) === "true" ? false : initialIsOpen
+  );
 
   const linkToStore = (() => {
     if (isMobile) {
@@ -96,8 +90,6 @@ export const Smartbanner = ({
     return "flex";
   })();
 
-  // if (!isMobile) return null;
-
   return (
     <div
       className={`fixed top-0 inset-x-0 justify-between items-center bg-neutral-100 px-4 py-2 border-b-[1px] border-neutral-300 ${display}`}
@@ -106,7 +98,7 @@ export const Smartbanner = ({
       <div className="flex justify-start items-center gap-2">
         <CloseIcon
           className="w-4 h-4 text-neutral-400 hover:cursor-pointer"
-          onClick={handleClose}
+          onClick={onClose}
         />
         <img alt="App Icon" src={iconUrl} className="w-12 h-12 rounded-lg" />
         <div className="text-left">

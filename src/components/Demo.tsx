@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { SmartbannerProps, Smartbanner } from "./Smartbanner";
 import { isAndroid, isIos, isMobile } from "../lib/userAgent";
+import { COOKIE, setCookie } from "../lib/cookie";
 
 const initialState = {
   title: "Frontend Masters",
@@ -44,6 +45,17 @@ const Demo = () => {
   //     "Get on the Play Store"
   //   );
 
+  const [isOpen, setIsOpen] = useState<boolean>(true);
+
+  const handleClose = () => {
+    setCookie(COOKIE.HideSmartBanner, "true", {
+      sameSite: "strict",
+      maxAge: 60 * 60 * 24 * 1, // 1 day
+    });
+
+    setIsOpen(false);
+  };
+
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
       {/* left */}
@@ -61,6 +73,7 @@ const Demo = () => {
           desktopDescription={
             rest.displayOnDesktop ? rest.desktopDescription : ""
           }
+          onClose={handleClose}
           desktopUrl={rest.displayOnDesktop ? rest.desktopUrl : ""}
         />
         <div className="mt-4">
