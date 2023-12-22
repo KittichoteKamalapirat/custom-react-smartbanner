@@ -34,7 +34,6 @@ const Demo = () => {
     appleUrl,
     isOpen: initialIsOpen,
     androidUrl,
-    closeLabel = "Close",
     ...rest
   } = props;
   //   const [title, setTitle] = useState<string>("Frontend Masters");
