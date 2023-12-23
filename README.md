@@ -119,17 +119,59 @@ function ProductPage() {
 ```
 
 
+**Use case 4 :** Show in desktop too
+
+```jsx
+function ProductPage() {
+  const cookiesData = new Cookies(document.cookie);
+  const [isOpen, setIsOpen] = useState(
+    cookiesData.get("hideSmartbanner") !== "true"
+  );
+
+  const handleClose = () => {
+    cookiesData.set("hideSmartbanner", "true", {
+      sameSite: "strict",
+      maxAge: 60 * 60 * 24 * 7, // 1 week
+    });
+
+    setIsOpen(false);
+  };
+
+  return (
+    <div>
+      ...
+      <Smartbanner
+        isOpen={isOpen}
+        onClose={handleClose}
+        title="Frontend Masters"
+        iconUrl="https://play-lh.googleusercontent.com/8X11A1RYP--qUN-FA3tuEdNG--8QSptibgY6xWQRUDI2YASyAXe726CaE_jEohFYGno=w240-h480-rw"
+        appleUrl="https://apps.apple.com/us/app/frontend-masters/id1383780486"
+        androidUrl="https://play.google.com/store/apps/details?id=in.mjg.frontendmasters.store&hl=en_GB"
+        displayOnDesktop=true
+          desktopDescription="Open in the App Store"
+          desktopUrl= "https://apps.apple.com/us/app/frontend-masters/id1383780486"
+      />
+      ...
+    </div>
+  );
+}
+```
+
+
+
 ## Props
 
 | Prop | Required / Optional | Default Value | Description |
 | --- | --- | --- | --- |
-| title | required | `undefined` | Title of the app name. Should be the name of the app with or without a slogan ex. Frontend, Masters, Frontend Masters | Your Path to Senior Developer |
-| appleDescription | optional | `""` | Description to display on the banner if the device is apple (This will be automatically detected via user agent). Here, you can choose to display the price, review ratings, author's name, etc. |
-| androidDescription | optional | `""` | Description to display on the banner if the device is android (This will be automatically detected via user agent)|
+| title | required | `undefined` | Title of the app name. Should be the name of the app with or without a slogan ex. Frontend Masters, Frontend Masters \| Your Path to Senior Developer |
+| isOpen | required | `true` | Whether to display the banner or not |
 | iconUrl | required | `undefined` | Url of the icon that will be displayed (If your app is published, you can get the icon url on either the app store or the play store) |
-| buttonLabel | optional | `"Open"` | Label for the banner button |
-| appleUrl | optional | `undefined` | URL where the users will be redirected when clicking the banner (if the user is using an apple device) |
-| androidUrl | optional | `undefined` | URL where the users will be redirected when clicking the banner (if the user is using an android device) |
+| appleUrl | required | `undefined` | URL where the users will be redirected when clicking the banner (if the user is using an apple device) |
+| androidUrl | required | `undefined` | URL where the users will be redirected when clicking the banner (if the user is using an android device) |
+| onClose | optional | `undefined` | A callback when a close button is clicked |
+| appleDescription | optional | `"Open on the App Store"` | Description to display on the banner if the device is apple (This will be automatically detected via user agent). Here, you can choose to display the price, review ratings, author's name, etc. |
+| androidDescription | optional | `"Open on the Play Store"` | Description to display on the banner if the device is android (This will be automatically detected via user agent)|
+| buttonLabel | optional | `"Open"` | Label for the Call to Action (CTA) button |
 | displayOnApple | optional | `true` | Indicates if the banner should be displayed on apple devices |
 | displayOnAndroid | optional | `true` | Indicates if the banner should be displayed on android devices |
 | displayOnDesktop | optional | `false` | Indicates if the banner should be displayed on desktop |
