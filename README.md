@@ -147,7 +147,7 @@ function ProductPage() {
         iconUrl="https://play-lh.googleusercontent.com/8X11A1RYP--qUN-FA3tuEdNG--8QSptibgY6xWQRUDI2YASyAXe726CaE_jEohFYGno=w240-h480-rw"
         appleUrl="https://apps.apple.com/us/app/frontend-masters/id1383780486"
         androidUrl="https://play.google.com/store/apps/details?id=in.mjg.frontendmasters.store&hl=en_GB"
-        displayOnDesktop=true
+        displayOnDesktop={true}
           desktopDescription="Open in the App Store"
           desktopUrl= "https://apps.apple.com/us/app/frontend-masters/id1383780486"
       />
