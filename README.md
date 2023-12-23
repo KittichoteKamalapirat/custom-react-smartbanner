@@ -35,17 +35,20 @@ If you want to always show the banner, include the `Smartbanner` component in yo
 
 ```jsx
 function App() {
+  const [isOpen, setIsOpen] = useState(true);
+
+  const handleClose = () => setIsOpen(false);
+
   return (
     <div>
       ...
       <Smartbanner
+        isOpen={isOpen}
+        onClose={handleClose}
         title="Frontend Masters"
-        applePrice="Free"
-        appleUrl="Free"
-        androidPrice="Free"
-        androidUrl="Free"
         iconUrl="https://play-lh.googleusercontent.com/8X11A1RYP--qUN-FA3tuEdNG--8QSptibgY6xWQRUDI2YASyAXe726CaE_jEohFYGno=w240-h480-rw"
-        author="Frontend Masters"
+        appleUrl="https://apps.apple.com/us/app/frontend-masters/id1383780486"
+        androidUrl="https://play.google.com/store/apps/details?id=in.mjg.frontendmasters.store&hl=en_GB"
       />
       ...
     </div>
@@ -59,17 +62,55 @@ If you want to show the banner only in some pages, then include the `Smartbanner
 
 ```jsx
 function ProductPage() {
+  const [isOpen, setIsOpen] = useState(true);
+
+  const handleClose = () => setIsOpen(false);
+
   return (
     <div>
       ...
       <Smartbanner
+        isOpen={isOpen}
+        onClose={handleClose}
         title="Frontend Masters"
-        applePrice="Free"
-        appleUrl="Free"
-        androidPrice="Free"
-        androidUrl="Free"
         iconUrl="https://play-lh.googleusercontent.com/8X11A1RYP--qUN-FA3tuEdNG--8QSptibgY6xWQRUDI2YASyAXe726CaE_jEohFYGno=w240-h480-rw"
-        author="Frontend Masters"
+        appleUrl="https://apps.apple.com/us/app/frontend-masters/id1383780486"
+        androidUrl="https://play.google.com/store/apps/details?id=in.mjg.frontendmasters.store&hl=en_GB" //apps.apple.com/us/app/frontend-masters/id1383780486"
+      />
+      ...
+    </div>
+  );
+}
+```
+
+**Use case 3 :** Do not show again after 14 days (if dismissed)
+
+```jsx
+function ProductPage() {
+  const cookiesData = new Cookies(document.cookie);
+  const [isOpen, setIsOpen] = useState(
+    cookiesData.get("hideSmartbanner") !== "true"
+  );
+
+  const handleClose = () => {
+    cookiesData.set("hideSmartbanner", "true", {
+      sameSite: "strict",
+      maxAge: 60 * 60 * 24 * 7, // 1 week
+    });
+
+    setIsOpen(false);
+  };
+
+  return (
+    <div>
+      ...
+      <Smartbanner
+        isOpen={isOpen}
+        onClose={handleClose}
+        title="Frontend Masters"
+        iconUrl="https://play-lh.googleusercontent.com/8X11A1RYP--qUN-FA3tuEdNG--8QSptibgY6xWQRUDI2YASyAXe726CaE_jEohFYGno=w240-h480-rw"
+        appleUrl="https://apps.apple.com/us/app/frontend-masters/id1383780486"
+        androidUrl="https://play.google.com/store/apps/details?id=in.mjg.frontendmasters.store&hl=en_GB"
       />
       ...
     </div>

@@ -4,6 +4,7 @@ import { isAndroid, isIos, isMobile } from "../lib/userAgent";
 import { COOKIE, setCookie } from "../lib/cookie";
 
 const initialState = {
+  isOpen: true,
   title: "Frontend Masters",
   iconUrl:
     "https://play-lh.googleusercontent.com/8X11A1RYP--qUN-FA3tuEdNG--8QSptibgY6xWQRUDI2YASyAXe726CaE_jEohFYGno=w240-h480-rw",
@@ -44,7 +45,7 @@ const Demo = () => {
   //     "Get on the Play Store"
   //   );
 
-  const [isOpen, setIsOpen] = useState<boolean>(true);
+  const [isOpen, setIsOpen] = useState<boolean>(props.isOpen);
 
   const handleClose = () => {
     setCookie(COOKIE.HideSmartBanner, "true", {
@@ -60,6 +61,8 @@ const Demo = () => {
       {/* left */}
       <div>
         <Smartbanner
+          isOpen={isOpen}
+          onClose={handleClose}
           title={title}
           appleDescription={appleDescription}
           androidDescription={androidDescription}
@@ -72,7 +75,6 @@ const Demo = () => {
           desktopDescription={
             rest.displayOnDesktop ? rest.desktopDescription : ""
           }
-          onClose={handleClose}
           desktopUrl={rest.displayOnDesktop ? rest.desktopUrl : ""}
         />
         <div className="mt-4">

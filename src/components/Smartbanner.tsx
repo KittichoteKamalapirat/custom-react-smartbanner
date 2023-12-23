@@ -1,11 +1,10 @@
 /// <reference types="vite-plugin-svgr/client" />
-import { useState } from "react";
 import CloseIcon from "../assets/close.svg?react";
-import { COOKIE, getCookie } from "../lib/cookie";
 import { isAndroid, isIos, isMobile } from "../lib/userAgent";
 
 interface CommonProps {
   // ui
+
   title: string;
   iconUrl: string;
   appleDescription?: string;
@@ -17,8 +16,7 @@ interface CommonProps {
   displayOnApple?: boolean;
   displayOnAndroid?: boolean;
   // state
-
-  isOpen?: boolean;
+  isOpen: boolean;
   onClose?: () => void;
   notDisplayAgainSeconds?: number; // in seconds
 }
@@ -38,9 +36,10 @@ export type SmartbannerProps = NoDesktopProps | DesktopProps;
 export const Smartbanner = ({
   // ui
   title,
+  isOpen,
   iconUrl,
-  appleDescription = "",
-  androidDescription = "",
+  appleDescription = "Open on the App Store",
+  androidDescription = "Open on the Play Store",
   buttonLabel = "Open",
   // logics
   displayOnApple = true,
@@ -52,10 +51,6 @@ export const Smartbanner = ({
   onClose,
   ...rest
 }: SmartbannerProps) => {
-  const [isOpen, setIsOpen] = useState<boolean>(
-    getCookie(COOKIE.HideSmartBanner) === "true" ? false : initialIsOpen
-  );
-
   const linkToStore = (() => {
     if (isMobile) {
       if (isIos) return appleUrl;
