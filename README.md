@@ -7,6 +7,7 @@ It uses ReactJS extensively and is very flexible for developers to use, allowing
 ### Demo
 
 #### [🎨 Live Demo](https://kittichotekamalapirat.github.io/custom-react-smartbanner-demo/)
+![demo](/giphy.gif)
 
 ### What you can do
 
