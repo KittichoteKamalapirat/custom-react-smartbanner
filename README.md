@@ -4,6 +4,10 @@
 
 It uses ReactJS extensively and is very flexible for developers to use, allowing you to display banners in a certain component or your entire application.
 
+### Demo
+
+#### [🎨 Live Demo](https://kittichotekamalapirat.github.io/custom-react-smartbanner-demo/)
+
 ### What you can do
 
 - Choose to display the banner only on some pages.
